@@ -15,3 +15,16 @@ lint: # запуск линтера
 
 package-reinstall: # переустановка пакета в систему после обновления
 	pip install --user --force-reinstall dist/*.whl
+
+test-coverage:
+	poetry run pytest --cov=gendiff --cov-report xml tests/
+
+test:
+	poetry run pytest
+
+selfcheck:
+	poetry check
+
+check: selfcheck test lint
+
+.PHONY: install test lint selfcheck check build
