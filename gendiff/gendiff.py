@@ -13,7 +13,7 @@ def get_string(dictionary):
             result_string += f'{key}: {json.dumps(value)}\n'
         else:
             result_string += f'{key}: {value}\n'
-    return '{\n' + result_string + '}'
+    return '{\n' + result_string + '}\n'
 
 
 def generate_diff(path1, path2):
