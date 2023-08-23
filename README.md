@@ -5,3 +5,6 @@
 
 #### JSON file comparison:
 <a href="https://asciinema.org/a/PyxFk7HotdzehMCOKPZqoJqZh"><img src="https://asciinema.org/a/PyxFk7HotdzehMCOKPZqoJqZh.png" width="836"/></a>
+
+#### YAML or YML file comparison:
+<a href="https://asciinema.org/a/ZvLa5P6V21Ja2BIHYB7F1qnz5"><img src="https://asciinema.org/a/ZvLa5P6V21Ja2BIHYB7F1qnz5.png" width="836"/></a>
