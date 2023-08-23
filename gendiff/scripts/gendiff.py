@@ -17,12 +17,11 @@ def get_args():
     parser.add_argument('second_file')
     parser.add_argument('-f', '--format', help='set format of output')
     args = parser.parse_args()
-    return args
+    print(generate_diff(args.first_file, args.second_file))
 
 
 def main():
-    args = get_args()
-    print(generate_diff(args.first_file, args.second_file))
+    get_args()
 
 
 if __name__ == '__main__':

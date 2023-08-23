@@ -1,5 +1,5 @@
 import json
-
+from gendiff.parsing import parse_files
 
 ADDED_VALUE = '  + '
 REMOTE_VALUE = '  - '
@@ -17,8 +17,8 @@ def get_string(dictionary):
 
 
 def generate_diff(path1, path2):
-    file1 = json.load(open(path1))
-    file2 = json.load(open(path2))
+    file1 = parse_files(path1)
+    file2 = parse_files(path2)
     diff = {}
     shared_keys = sorted(file1.keys() | file2.keys())
     for key in shared_keys:
