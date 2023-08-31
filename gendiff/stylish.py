@@ -18,7 +18,8 @@ def convert_to_string(value, depth=1):
     elif isinstance(value, dict):
         for key, val in value.items():
             val = convert_value(val)
-            result_lst.append(f" {INDENT * depth} {key}: {convert_to_string(val, depth+2)}")
+            result_lst.append(f" {INDENT * depth} {key}: "
+                              f"{convert_to_string(val, depth+2)}")
         result_lst.append(f"{INDENT * (depth-1)}}}")
     return '\n'.join(result_lst)
 
