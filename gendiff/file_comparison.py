@@ -1,20 +1,26 @@
-def compare_files(file1, file2):
+def sort_keys(first_file, second_file):
+    combined_keys = sorted(first_file.keys() | second_file.keys())
+    return combined_keys
+
+
+def compare_files(first_file, second_file):
     diff = {}
-    combined_keys = sorted(file1.keys() | file2.keys())
+    combined_keys = sort_keys(first_file, second_file)
     for key in combined_keys:
-        if key not in file1 and key in file2:
-            diff[key] = {'type': 'added', 'value': file2[key]}
-        elif key in file1 and key not in file2:
-            diff[key] = {'type': 'deleted', 'value': file1[key]}
-        elif file1[key] == file2[key]:
-            diff[key] = {'type': 'unchanged', 'value': file2[key]}
-        elif isinstance(file1[key], dict) and isinstance(file2[key], dict):
+        if key not in first_file and key in second_file:
+            diff[key] = {'type': 'added', 'value': second_file[key]}
+        elif key in first_file and key not in second_file:
+            diff[key] = {'type': 'deleted', 'value': first_file[key]}
+        elif first_file[key] == second_file[key]:
+            diff[key] = {'type': 'unchanged', 'value': second_file[key]}
+        elif isinstance(first_file[key], dict) \
+                and isinstance(second_file[key], dict):
             diff[key] = {
                 'type': 'nested',
-                'value': compare_files(file1[key], file2[key])
+                'value': compare_files(first_file[key], second_file[key])
             }
         else:
             diff[key] = {'type': 'changed', 'value': {
-                'old value': file1[key],
-                'new value': file2[key]}}
+                'old value': first_file[key],
+                'new value': second_file[key]}}
     return diff

@@ -37,5 +37,6 @@ def test_generate_diff_nested_yml():
         result = file.read()
         assert generate_diff(
                 'tests/fixtures/nested_file1.yml',
-                'tests/fixtures/nested_file2.yml'
+                'tests/fixtures/nested_file2.yml',
+		formatter='stylish'
                 ) == result
