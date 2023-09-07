@@ -11,7 +11,7 @@ def convert_value(value):
     return value
 
 
-def convert_to_string(value, depth=1):
+def make_string(value, depth=1):
     result_lst = ["{"]
     if not isinstance(value, dict):
         return convert_value(value)
@@ -19,7 +19,7 @@ def convert_to_string(value, depth=1):
         for key, val in value.items():
             val = convert_value(val)
             result_lst.append(f" {INDENT * depth} {key}: "
-                              f"{convert_to_string(val, depth+2)}")
+                              f"{make_string(val, depth+2)}")
         result_lst.append(f"{INDENT * (depth-1)}}}")
     return '\n'.join(result_lst)
 
@@ -37,11 +37,11 @@ def get_format_stylish(diff, depth=1):
             old_value = values.get('old value')
             new_value = values.get('new value')
             result_diff.append(f"{INDENT * depth}- {key}: "
-                               f"{convert_to_string(old_value, depth+2)}\n")
+                               f"{make_string(old_value, depth+2)}\n")
             result_diff.append(f"{INDENT * depth}+ {key}: "
-                               f"{convert_to_string(new_value, depth+2)}\n")
+                               f"{make_string(new_value, depth+2)}\n")
         else:
             result_diff.append(f"{INDENT * depth}{STATUS[types]} {key}: "
-                               f"{convert_to_string(values, depth+2)}\n")
+                               f"{make_string(values, depth+2)}\n")
     result_diff = ''.join(result_diff)
     return result_diff

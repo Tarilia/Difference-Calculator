@@ -11,3 +11,6 @@
 
 #### YAML and JSON nested file comparison. Format 'stylish':
 <a href="https://asciinema.org/a/aKUjjnuvjPIYdg6SQCzq6edfx"><img src="https://asciinema.org/a/aKUjjnuvjPIYdg6SQCzq6edfx.png" width="836"/></a>
+
+#### Nested file comparison. Format 'plain':
+<a href="https://asciinema.org/a/52ny5g2sLjy9FXvNwAlxSY0gU"><img src="https://asciinema.org/a/52ny5g2sLjy9FXvNwAlxSY0gU.png" width="836"/></a>
