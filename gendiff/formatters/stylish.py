@@ -24,14 +24,14 @@ def make_string(value, depth=1):
     return '\n'.join(result_lst)
 
 
-def get_format_stylish(diff, depth=1):
+def get_string_stylish(diff, depth=1):
     result_diff = []
     for key, value in diff.items():
         types = value.get('type')
         values = value.get('value')
         if types == 'nested':
             result_diff.append(f"{INDENT * depth}  {key}: {{\n"
-                               f"{get_format_stylish(values, depth+2)}")
+                               f"{get_string_stylish(values, depth+2)}")
             result_diff.append(f"{INDENT * (depth + 1)}}}\n")
         elif types == 'changed':
             old_value = values.get('old value')
@@ -45,3 +45,8 @@ def get_format_stylish(diff, depth=1):
                                f"{make_string(values, depth+2)}\n")
     result_diff = ''.join(result_diff)
     return result_diff
+
+
+def get_format_stylish(diff):
+    diff = f"{{\n{get_string_stylish(diff)}}}"
+    return diff
