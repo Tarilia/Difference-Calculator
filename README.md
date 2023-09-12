@@ -13,7 +13,7 @@
 <a href="https://asciinema.org/a/aKUjjnuvjPIYdg6SQCzq6edfx"><img src="https://asciinema.org/a/aKUjjnuvjPIYdg6SQCzq6edfx.png" width="836"/></a>
 
 #### Nested file comparison. Format 'plain':
-<a href="https://asciinema.org/a/52ny5g2sLjy9FXvNwAlxSY0gU"><img src="https://asciinema.org/a/52ny5g2sLjy9FXvNwAlxSY0gU.png" width="836"/></a>
+<a href="https://asciinema.org/a/tG3wqeHIs9HbVtMQ68iS82X5S"><img src="https://asciinema.org/a/tG3wqeHIs9HbVtMQ68iS82X5S.png" width="836"/></a>
 
 #### Nested file comparison. Format 'json':
 <a href="https://asciinema.org/a/Ea98IssWNXbrfT6e3oYnt0wcf"><img src="https://asciinema.org/a/Ea98IssWNXbrfT6e3oYnt0wcf.png" width="836"/></a>
