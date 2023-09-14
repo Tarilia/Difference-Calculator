@@ -4,11 +4,11 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/b95d0aa401fb54de5c70/test_coverage)](https://codeclimate.com/github/Tarilia/python-project-50/test_coverage)
 
 ### Description:
-This program allows you to compare two files with the extension .yml or .json and displays the difference in three formats to choose from.
+This program allows you to compare two files with the extension .yml or .json and displays the difference in three formats to choose from: 'stylish', 'plain' and 'json'.
 
 ### Languages and Tools:
-python = "^3.10"
-pyyaml = "^6.0.1"
+- python = "^3.10"
+- pyyaml = "^6.0.1"
 
 ### Installation:
 - git clone git@github.com:Tarilia/python-project-50.git
