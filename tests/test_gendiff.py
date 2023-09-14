@@ -1,34 +1,41 @@
+import pytest
 from gendiff.gendiff import generate_diff
+from gendiff.parsing import read_file
 
 
-def test_generate_diff():
-    file1_json = 'tests/fixtures/file1.json'
-    file2_json = 'tests/fixtures/file2.json'
-    file1_yml = 'tests/fixtures/file1.yml'
-    file2_yml = 'tests/fixtures/file2.yml'
-    nested_file1_json = 'tests/fixtures/nested_file1.json'
-    nested_file2_json = 'tests/fixtures/nested_file2.json'
-    nested_file1_yml = 'tests/fixtures/nested_file1.yml'
-    nested_file2_yml = 'tests/fixtures/nested_file2.yml'
+file1_json = 'tests/fixtures/file1.json'
+file2_json = 'tests/fixtures/file2.json'
+file1_yml = 'tests/fixtures/file1.yml'
+file2_yml = 'tests/fixtures/file2.yml'
+nested_file1_json = 'tests/fixtures/nested_file1.json'
+nested_file2_json = 'tests/fixtures/nested_file2.json'
+nested_file1_yml = 'tests/fixtures/nested_file1.yml'
+nested_file2_yml = 'tests/fixtures/nested_file2.yml'
 
-    result_json = open('tests/fixtures/json_result.txt').read()
-    result_yml = open('tests/fixtures/yml_result.txt').read()
-    result_stylish_json = open('tests/fixtures/nested_result.txt').read()
-    result_stylish_yml = open('tests/fixtures/nested_result.txt').read()
-    result_plain = open('tests/fixtures/plain_result.txt').read()
-    nested_result_json = open('tests/fixtures/nested_json_result.txt').read()
+result_json = 'tests/fixtures/json_result.txt'
+result_yml = 'tests/fixtures/yml_result.txt'
+result_stylish_json = 'tests/fixtures/nested_result.txt'
+result_stylish_yml = 'tests/fixtures/nested_result.txt'
+result_plain = 'tests/fixtures/plain_result.txt'
+nested_result_json = 'tests/fixtures/nested_json_result.txt'
 
-    assert generate_diff(file1_json, file2_json) == result_json
-    assert generate_diff(file1_yml, file2_yml) == result_yml
-    assert generate_diff(nested_file1_json, nested_file2_json,
-                         formatter='stylish') == result_stylish_json
-    assert generate_diff(nested_file1_yml, nested_file2_yml,
-                         formatter='stylish') == result_stylish_yml
-    assert generate_diff(nested_file1_json, nested_file2_json,
-                         formatter='plain') == result_plain
-    assert generate_diff(nested_file1_yml, nested_file2_yml,
-                         formatter='plain') == result_plain
-    assert generate_diff(nested_file1_json, nested_file2_json,
-                         formatter='json') == nested_result_json
-    assert generate_diff(nested_file1_yml, nested_file2_yml,
-                         formatter='json') == nested_result_json
+
+@pytest.mark.parametrize('first_file, second_file, formatter, result_file',
+                         [(file1_json, file2_json, 'stylish',
+                           read_file(result_json)),
+                          (file1_yml, file2_yml, 'stylish',
+                           read_file(result_yml)),
+                          (nested_file1_json, nested_file2_json, 'stylish',
+                           read_file(result_stylish_json)),
+                          (nested_file1_yml, nested_file2_yml, 'stylish',
+                           read_file(result_stylish_yml)),
+                          (nested_file1_json, nested_file2_json, 'plain',
+                           read_file(result_plain)),
+                          (nested_file1_yml, nested_file2_yml, 'plain',
+                           read_file(result_plain)),
+                          (nested_file1_json, nested_file2_json, 'json',
+                           read_file(nested_result_json)),
+                          (nested_file1_yml, nested_file2_yml, 'json',
+                           read_file(nested_result_json))])
+def test_generate_diff(first_file, second_file, formatter, result_file):
+    assert generate_diff(first_file, second_file, formatter) == result_file

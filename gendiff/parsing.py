@@ -4,20 +4,19 @@ import yaml
 
 def make_format(path):
     _, format_file = path.split('.')
-    return format_file
-
-
-def open_json_file(path):
-    return json.load(open(path))
-
-
-def open_yaml_file(path):
-    return yaml.safe_load(open(path))
-
-
-def parse_files(path):
-    format_file = make_format(path)
     if format_file == 'json':
-        return open_json_file(path)
+        return 'json'
     if format_file == 'yaml' or format_file == 'yml':
-        return open_yaml_file(path)
+        return 'yaml'
+
+
+def read_file(path):
+    with open(path, 'r') as file:
+        return file.read()
+
+
+def parse_files(data, format_file):
+    if format_file == 'json':
+        return json.loads(data)
+    if format_file == 'yaml':
+        return yaml.safe_load(data)
