@@ -11,7 +11,7 @@ This program allows you to compare two files with the extension .yml or .json an
 - pyyaml = "^6.0.1"
 
 ### Installation:
-- git clone git@github.com:Tarilia/python-project-50.git
+- download the project
 - make install
 
 #### JSON file comparison:
